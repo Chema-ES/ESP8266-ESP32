@@ -1,0 +1,41 @@
+DOIT ESP32 DEVKIT V1
+
+SPECIFICATIONS
+
+CPU and Memory
+• Xtensa® Dual-Core 32-bit LX6 microprocessors, up to 600 MIPS
+• 448 KByte ROM
+• 520 KByte SRAM
+• 16 KByte SRAM in RTC
+• QSPI Flash/SRAM, up to 4 x 16 MBytes
+• Power supply: 2.2 V to 3.6 V
+Clocks and Timers
+• Internal 8 MHz oscillator with calibration
+• Internal RC oscillator with calibration
+• External 2 MHz to 40 MHz crystal oscillator
+• External 32 kHz crystal oscillator for RTC with calibration
+• Two timer groups, including 2 x 64-bit timers and 1 x main watchdog in each group
+• RTC timer with sub-second accuracy
+• RTC watchdog
+Advanced Peripheral Interfaces
+• 12-bit SAR ADC up to 18 channels
+• 2 × 8-bit D/A converters
+• 10 × touch sensors
+• Temperature sensor
+• 4 × SPI
+• 2 × I2S
+• 2 × I2C
+• 3 × UART
+• 1 host (SD/eMMC/SDIO)
+• 1 slave (SDIO/SPI)
+• Ethernet MAC interface with dedicated DMA and IEEE 1588 support
+• CAN 2.0
+• IR (TX/RX)
+• Motor PWM
+• LED PWM up to 16 channels
+• Hall sensor
+• Ultra low power analog pre-amplifier
+Development Support
+• SDK Firmware for fast on-line programming
+• Open source toolchains based on GCC
+Operating Temperature Range: -40 ° C to + 85 ° C

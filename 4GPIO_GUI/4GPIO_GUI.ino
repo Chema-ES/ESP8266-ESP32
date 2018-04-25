@@ -35,12 +35,11 @@
 
 // GPIOs 
  
-const int ledPin=2;
-const int gpio18= 18;
-const int gpio19 =19;
-const int gpio22= 22;
-const int gpio23 =23;
-const int DHTPin = 5;
+
+const int gpio[]={2,5,18,19,22,23};
+int valorGPIO[]={LOW,LOW,LOW,LOW,LOW,LOW};
+const int dhtPin = gpio[1];
+const int ledPin=gpio[0];
 
 // Datos conf. AP 
 
@@ -78,8 +77,6 @@ const int   daylightOffset_sec = 3600;
 
 struct tm timeinfo;
 
-int valorGPIO[]={LOW,LOW,LOW,LOW,LOW,LOW};
-
 void printLocalTime()
 {
   Serial.println("Servidor ntp");
@@ -97,7 +94,7 @@ void printLocalTime()
 #define DHTTYPE DHT11   // DHT 11
 // Inicializado del sensor
 
-DHT dht(DHTPin, DHTTYPE);
+DHT dht(dhtPin, DHTTYPE);
 
 // Variables temporales (temp en Celsius)
 
@@ -372,6 +369,10 @@ void setup() {
   
   Serial.begin(115200);
 
+  for(int i=2;i<=5;i++){
+    pinMode(gpio[i],OUTPUT);
+  }
+  pinMode(dhtPin,INPUT);
   pinMode(ledPin, OUTPUT);
   
   // Configura soft AP
@@ -488,39 +489,42 @@ void loop() {
 
         // Parser de request
         if (request.indexOf("GPIO18=ON") != -1){
-        digitalWrite(gpio18, HIGH);
+        digitalWrite(gpio[2], HIGH);
         valorGPIO[2] = HIGH;
         }
         if (request.indexOf("GPIO18=OFF") != -1){
-        digitalWrite(gpio18, LOW);
+        digitalWrite(gpio[2], LOW);
         valorGPIO[2] = LOW;
         }
     
         if (request.indexOf("GPIO19=ON") != -1){
-        digitalWrite(gpio19, HIGH);
+        digitalWrite(gpio[3], HIGH);
         valorGPIO[3] = HIGH;
         }
         if (request.indexOf("GPIO19=OFF") != -1){
-        digitalWrite(gpio19,LOW);
+        digitalWrite(gpio[3],LOW);
         valorGPIO[3] = LOW;
         }
         
         if (request.indexOf("GPIO22=ON") != -1){
-        digitalWrite(gpio22, HIGH);
+        digitalWrite(gpio[4], HIGH);
         valorGPIO[4] = HIGH;
         }
         if (request.indexOf("GPIO22=OFF") != -1){
-        digitalWrite(gpio22,LOW);
+        digitalWrite(gpio[4],LOW);
         valorGPIO[4] = LOW;
         }
         
         if (request.indexOf("GPIO23=ON") != -1){
-        digitalWrite(gpio23, HIGH);
+        digitalWrite(gpio[5], HIGH);
         valorGPIO[5] = HIGH;
         }
         if (request.indexOf("GPIO23=OFF") != -1){
-        digitalWrite(gpio23,LOW);
+        digitalWrite(gpio[5],LOW);
         valorGPIO[5] = LOW;
+        }
+        for(int i=2;i<=5;i++){
+          digitalWrite(gpio[i],valorGPIO[i]);
         }
         Serial.println("...iniciando GUI");
         //Confirmación conexión cliente
